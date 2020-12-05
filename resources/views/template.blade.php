@@ -10,12 +10,23 @@
     <title>@yield('title')</title>
 </head>
 <body>
+@if(!Route::is('signin') && !Route::is('login'))
+    <a href="{{ route('logout') }}" class="btn btn-danger">Выйти</a>
+@endif
 
-@if(Request::is('home/allusers'))
+@if(session('userdata'))
+    <div style="float:right">
+        @foreach(session('userdata') as $data)
+            <p>{{ $data }}</p>
+        @endforeach
+    </div>
+@endif
+
+@if(Route::is('allusers'))
     <a class="btn btn-secondary" href="{{ route('home') }}">Назад</a>
 @endif
 
-@if(Request::is('home/allusers/password/change'))
+@if(Route::is('changepwd'))
     <a class="btn btn-secondary" href="{{ route('allusers') }}">Назад</a>
 @endif
 
@@ -26,19 +37,20 @@
 </div>
 
 @endif
-@if(Request::is('/'))
-@yield('authForm')
+
+@if(Route::is('signin'))
+    @yield('authForm')
 @endif
 
-@if(Request::is('login'))
+@if(Route::is('login'))
     @yield('loginForm')
 @endif
 
-@if(Request::is('home') || Request::is('home/allusers/password/**'))
+@if(Route::is('home') || Route::is('changepwd'))
     @yield('body')
 @endif
 
-@if(Request::is('home/allusers'))
+@if(Route::is('allusers'))
     @yield('utable')
 @endif
 

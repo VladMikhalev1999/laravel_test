@@ -15,6 +15,6 @@ class AuthController extends Controller
         $a->login = $r->input('login');
         $a->password = md5($r->input("password"));
         $a->save();
-        return redirect()->route('home')->with('success', 'Регистрация прошла успешно!');
+        return redirect()->route('signin')->with('success', 'Регистрация прошла успешно!');
     }
 }

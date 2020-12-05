@@ -5,7 +5,7 @@
 @endsection
 
 @section('authForm')
-<form action="{{ route('signinForm') }}" method="post">
+<form  class="mt-5" margin: 0 auto;" action="{{ route('signinForm') }}" method="post">
     @csrf
     <h1>Авторизация</h1>
     <div class="form-group">
@@ -16,10 +16,14 @@
         <label for="exampleInputPassword1">Пароль</label>
         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Введите пароль">
     </div>
-    <div class="form-group">
+    <div class="form-group mx-auto" style="width: 150px">
+        <input class="form-check-input" name="remember" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Запомнить пароль</label>
+    </div>
+    <div style="width: 250px" class="mx-auto">
+        <button type="submit" class="btn btn-primary">Войти</button>
         <a href="{{ route('login') }}" class="btn btn-dark">Зарегистрироваться</a>
     </div>
-    <button type="submit" class="btn btn-primary">Войти</button>
 </form>
 
 @endsection
