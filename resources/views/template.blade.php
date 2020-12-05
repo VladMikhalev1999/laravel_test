@@ -11,7 +11,7 @@
 </head>
 <body>
 @if(!Route::is('signin') && !Route::is('login'))
-    <a href="{{ route('logout') }}" class="btn btn-danger">Выйти</a>
+    <a style="float:right" href="{{ route('logout') }}" class="btn btn-danger">Выйти</a>
 @endif
 
 @if(session('userdata'))
@@ -26,17 +26,21 @@
     <a class="btn btn-secondary" href="{{ route('home') }}">Назад</a>
 @endif
 
+@if(Route::is('login'))
+<a class="btn btn-secondary" href="{{ route('signin') }}">Назад</a>
+@endif
+
 @if(Route::is('changepwd'))
     <a class="btn btn-secondary" href="{{ route('allusers') }}">Назад</a>
 @endif
 
-@if($errors->any() || session('success') || session('error'))
+@if(Route::is('emails'))
+<a class="btn btn-secondary" href="{{ route('allusers') }}">Назад</a>
+@endif
 
-<div class="container mt-5">
+<div style="min-height: 72px;" class="container mt-5">
     @include('messages')
 </div>
-
-@endif
 
 @if(Route::is('signin'))
     @yield('authForm')
@@ -46,12 +50,16 @@
     @yield('loginForm')
 @endif
 
-@if(Route::is('home') || Route::is('changepwd'))
+@if(Route::is('home') || Route::is('changepwd') || Route::is('emailchange'))
     @yield('body')
 @endif
 
 @if(Route::is('allusers'))
     @yield('utable')
+@endif
+
+@if(Route::is('emails'))
+    @yield('emailtable')
 @endif
 
 </body>

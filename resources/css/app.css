@@ -7,3 +7,16 @@ body {
 form {
     width: 400px;
 }
+
+h1 {
+    text-align: center;
+}
+
+form button[type='submit'] {
+    width: 100%;
+}
+
+form #lolkek {
+    margin-top: 5px;
+    width: 100%;
+}

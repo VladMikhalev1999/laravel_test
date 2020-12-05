@@ -13,9 +13,9 @@ class LoginController extends Controller
     public function loginHandler(LoginRequest $r) {
         $toggle = $r->input('remember');
         $data = Auth::all();
-        $user = $data->where('login', '=', $r->input('login'));
-        if ($user) {
-            if ($user->first()->getAttribute('password') == md5($r->input('password'))) {
+        $user = $data->where('login', '=', $r->input('login'))->first();
+        if ($user != null) {
+            if ($user->getAttribute('password') == md5($r->input('password'))) {
                 return $this->setCookie($toggle, $r->input('login'), $r->input('password'));
             }
             return redirect()->route('signin')->with('error', 'Введён неверный пароль!');

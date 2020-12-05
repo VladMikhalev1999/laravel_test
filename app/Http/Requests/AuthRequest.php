@@ -25,6 +25,7 @@ class AuthRequest extends FormRequest
     {
         return [
             'login' => 'required|min:4|max:30',
+            'email' => 'required|email|max:100',
             'password' => 'required|min:6|max:32',
             'repassword' => 'required|same:password'
         ];
@@ -36,6 +37,9 @@ class AuthRequest extends FormRequest
             'login.required' => 'Логин является обязательным',
             'login.min' => 'Логин короче 4 символов',
             'login.max' => 'Логин длиннее 30 символов',
+            'email.required' => 'Электронная почта является обязательной',
+            'email.email' => 'Неверный формат электронной почты',
+            'email.max' => 'Электронная почта длиннее 100 символов',
             'password.required' => 'Пароль является обязательным',
             'password.min' => 'Пароль короче 6 символов',
             'password.max' => 'Пароль длиннее 32 символов',

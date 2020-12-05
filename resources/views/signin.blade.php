@@ -20,10 +20,8 @@
         <input class="form-check-input" name="remember" type="checkbox" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault">Запомнить пароль</label>
     </div>
-    <div style="width: 250px" class="mx-auto">
-        <button type="submit" class="btn btn-primary">Войти</button>
-        <a href="{{ route('login') }}" class="btn btn-dark">Зарегистрироваться</a>
-    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+    <a id="lolkek" href="{{ route('login') }}" class="btn btn-dark">Зарегистрироваться</a>
 </form>
 
 @endsection
