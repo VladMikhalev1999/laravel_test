@@ -5,7 +5,7 @@
 @endsection
 
 @section('authForm')
-<form  class="mt-5" margin: 0 auto;" action="{{ route('signinForm') }}" method="post">
+<form  class="mx-auto mt-5" action="{{ route('signinForm') }}" method="post">
     @csrf
     <h1>Авторизация</h1>
     <div class="form-group">
